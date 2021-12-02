@@ -1,0 +1,54 @@
+./models.py:9:1: E302 expected 2 blank lines, found 1
+./models.py:15:1: E302 expected 2 blank lines, found 1
+./models.py:23:1: E302 expected 2 blank lines, found 1
+./models.py:138:1: E302 expected 2 blank lines, found 1
+./models.py:142:1: E302 expected 2 blank lines, found 1
+./models.py:145:1: E302 expected 2 blank lines, found 1
+./models.py:148:1: E302 expected 2 blank lines, found 1
+./models.py:151:1: E302 expected 2 blank lines, found 1
+./models.py:165:1: E302 expected 2 blank lines, found 1
+./models.py:165:1: F811 redefinition of unused 'Match' from line 1
+./models.py:192:1: E302 expected 2 blank lines, found 1
+./models.py:207:1: E302 expected 2 blank lines, found 1
+./models.py:210:1: E305 expected 2 blank lines after class or function definition, found 1
+./view.py:6:1: E302 expected 2 blank lines, found 1
+./view.py:10:1: E302 expected 2 blank lines, found 1
+./view.py:16:1: E302 expected 2 blank lines, found 1
+./view.py:25:1: E302 expected 2 blank lines, found 1
+./view.py:42:1: E302 expected 2 blank lines, found 1
+./view.py:44:14: E211 whitespace before '('
+./view.py:46:1: E302 expected 2 blank lines, found 1
+./view.py:47:60: W291 trailing whitespace
+./view.py:49:1: E302 expected 2 blank lines, found 1
+./view.py:52:1: E302 expected 2 blank lines, found 1
+./view.py:56:1: E302 expected 2 blank lines, found 1
+./view.py:59:1: E302 expected 2 blank lines, found 1
+./view.py:62:1: E302 expected 2 blank lines, found 1
+./view.py:65:1: E302 expected 2 blank lines, found 1
+./view.py:70:1: E302 expected 2 blank lines, found 1
+./view.py:71:44: W291 trailing whitespace
+./controllers/controller.py:3:1: E302 expected 2 blank lines, found 1
+./controllers/controller.py:15:1: E302 expected 2 blank lines, found 1
+./controllers/controller.py:23:1: W293 blank line contains whitespace
+./controllers/controller.py:24:1: E302 expected 2 blank lines, found 1
+./controllers/controller.py:27:1: E302 expected 2 blank lines, found 1
+./controllers/joueurs.py:6:35: E203 whitespace before ','
+./controllers/joueurs.py:18:1: E302 expected 2 blank lines, found 1
+./controllers/joueurs.py:27:1: E302 expected 2 blank lines, found 1
+./controllers/joueurs.py:37:1: E302 expected 2 blank lines, found 1
+./controllers/joueurs.py:47:1: E302 expected 2 blank lines, found 1
+./controllers/tournoi.py:7:120: E501 line too long (133 > 119 characters)
+./controllers/tournoi.py:36:1: E302 expected 2 blank lines, found 1
+./controllers/tournoi.py:42:1: E302 expected 2 blank lines, found 1
+./controllers/tournoi.py:51:1: E302 expected 2 blank lines, found 1
+./controllers/tournoi.py:63:1: E302 expected 2 blank lines, found 1
+./controllers/tournoi.py:72:1: E305 expected 2 blank lines after class or function definition, found 1
+./controllers/tournoi.py:79:1: E302 expected 2 blank lines, found 1
+./controllers/tournoi.py:85:1: E302 expected 2 blank lines, found 1
+./controllers/tournoi.py:98:13: E203 whitespace before ':'
+./controllers/tournoi.py:100:1: W293 blank line contains whitespace
+./controllers/tournoi.py:101:1: E302 expected 2 blank lines, found 1
+./controllers/tournoi.py:104:1: E302 expected 2 blank lines, found 1
+./controllers/tournoi.py:118:1: E302 expected 2 blank lines, found 1
+./controllers/tournoi.py:123:5: F841 local variable 'reponses' is assigned to but never used
+./controllers/tournoi.py:126:1: E302 expected 2 blank lines, found 1
