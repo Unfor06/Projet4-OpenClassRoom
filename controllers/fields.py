@@ -1,4 +1,4 @@
-from view import print_question
+from view import FormView
 
 
 class Field:
@@ -78,6 +78,6 @@ class MultipleChoiceField(ChoiceField):
         if nb_choix > len(self.liste_choix):
             raise IndexError("Il n'y a pas assez de choix possibles")
         while len(liste_des_choix) < nb_choix:
-            print_question(liste_des_choix, nb_choix)
+            FormView.print_question(liste_des_choix, nb_choix)
             liste_des_choix.append(super().poser_question())
         return liste_des_choix

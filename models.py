@@ -62,10 +62,10 @@ class Tournoi:
 
     def donner_joueurs(self, ordre_de_tri):
         if ordre_de_tri == "C":
-            return sorted(self.joueurs, key=lambda j:j.classement, reverse=True)
+            return sorted(self.joueurs, key=lambda j: j.classement, reverse=True)
         elif ordre_de_tri == "A":
             return sorted(self.joueurs)
-        
+
     @property
     def score(self):
         score = {}
@@ -134,9 +134,9 @@ class Tournoi:
                 )[0]
                 joueurs.remove(j2)
                 matchs.append(Match(j1, j2))
-            
+
             return matchs
-    
+
     def nb_match_contre(self, j1, j2) -> int:
         return sum(
             1 for t in self.tours_passes for m in t.matchs if j1 in m and j2 in m
@@ -221,6 +221,7 @@ class Tour:
 
 class Ronde:
     pass
+
 
 try:
     db_load()

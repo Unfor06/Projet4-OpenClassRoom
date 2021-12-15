@@ -1,9 +1,9 @@
 from controllers.fields import ChoiceField, Field
-from controllers.form import gerer_formulaire
-from controllers.menu import gerer_menu
+from controllers.form import Formulaire
 from models import db_save
 from models import joueurs, Joueur
-from view import print_cree_joueur , lister_joueurs
+from view import JoueursView
+from controllers.menu import Menu
 
 FORM_JOUEUR = [
     Field("nom", "Quel est votre nom ?"),
@@ -15,38 +15,41 @@ FORM_JOUEUR = [
     ),
 ]
 
+
 def menu_joueurs():
-    gerer_menu(
+    controller_joueurs = ControllerJoueurs()
+    Menu.gerer_menu(
         [
-            ("Créer nouveau joueur", creer_joueur),
-            ("Modifier joueur", choisir_joueur),
-            ("Lister joueurs", lister_joueurs),
+            ("Créer nouveau joueur", controller_joueurs.creer_joueur),
+            ("Modifier joueur", controller_joueurs.choisir_joueur),
+            ("Lister joueurs", controller_joueurs.lister_joueurs),
         ]
     )
 
 
-def creer_joueur():
-    while True:
-        reponses = gerer_formulaire(FORM_JOUEUR)
-        try:
-            joueur = Joueur(**reponses)
-            db_save()
-            return joueur
-        except Exception as e:
-            print_cree_joueur(e)
+class ControllerJoueurs:
 
+    def creer_joueur(self):
+        while True:
+            reponses = Formulaire.gerer_formulaire(FORM_JOUEUR)
+            try:
+                joueur = Joueur(**reponses)
+                db_save()
+                return joueur
+            except Exception as e:
+                JoueursView.print_cree_joueur(e)
 
-def editer_joueur(joueur):
-    print(f"Joueur choisi: {joueur.nom}, {joueur.prenom}")
-    reponses = gerer_formulaire(FORM_JOUEUR)
-    joueur.nom = reponses["nom"]
-    joueur.prenom = reponses["prenom"]
-    joueur.date_de_naissance = reponses["date_de_naissance"]
-    joueur.sexe = reponses["sexe"]
-    joueur.classement = reponses["classement"]
-    db_save()
+    def editer_joueur(self, joueur):
+        print(f"Joueur choisi: {joueur.nom}, {joueur.prenom}")
+        reponses = Formulaire.gerer_formulaire(FORM_JOUEUR)
+        joueur.nom = reponses["nom"]
+        joueur.prenom = reponses["prenom"]
+        joueur.date_de_naissance = reponses["date_de_naissance"]
+        joueur.sexe = reponses["sexe"]
+        joueur.classement = reponses["classement"]
+        db_save()
 
-
-def choisir_joueur():
-    options_joueurs = [(j.nom, lambda: editer_joueur(j)) for j in joueurs]
-    gerer_menu(options_joueurs)
+    def choisir_joueur():
+        controller = ControllerJoueurs
+        options_joueurs = [(j.nom, lambda j=j: controller.editer_joueur(j)) for j in joueurs]
+        Menu.gerer_menu(options_joueurs)
