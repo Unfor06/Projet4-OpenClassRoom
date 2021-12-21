@@ -130,9 +130,9 @@ class ControllerTournoi:
     @staticmethod
     def editer_tournoi(tournoi: Tournoi):
         if tournoi.has_started or tournoi.is_finished:
-            TournoisView.print_editer_tournoi
+            TournoisView.print_editer_tournoi(tournoi)
             return None     
-        TournoisView.print_editer_tournoi_2()
+        TournoisView.print_editer_tournoi_2(tournoi)
         Formulaire.gerer_formulaire(FORM_TOURNOI)
         db_save()
 
