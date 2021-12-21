@@ -11,3 +11,4 @@ def menu_principal():
             ("Lancer un tournoi", start_tournament),
         ]
     )
+    

@@ -98,11 +98,11 @@ def menu_tournoi():
     if choix == "1":
         controller_tournoi.lancer_tournoi()
     elif choix == "2":
-        t = choisir_tournoi()
+        t = controller_tournoi.choisir_tournoi()
         if t:
             controller_tournoi.editer_tournoi(t)
     elif choix == "3":
-        t = choisir_tournoi()
+        t = controller_tournoi.choisir_tournoi()
         if t:
             gerer_tournoi(t)
 
@@ -112,8 +112,8 @@ def gerer_tournoi(tournoi):
 
 
 class ControllerTournoi:
-
-    def lancer_tournoi(self):
+    @staticmethod
+    def lancer_tournoi():
         while True:
             if joueurs:
                 reponses = Formulaire.gerer_formulaire(FORM_TOURNOI)
@@ -126,17 +126,18 @@ class ControllerTournoi:
                 return tournoi
             except ValidationError as e:
                 TournoisView.print_lancer_tournoi(e)
-
-    def editer_tournoi(self, tournoi: Tournoi):
+    
+    @staticmethod
+    def editer_tournoi(tournoi: Tournoi):
         if tournoi.has_started or tournoi.is_finished:
             TournoisView.print_editer_tournoi
-            return None
+            return None     
         TournoisView.print_editer_tournoi_2()
         Formulaire.gerer_formulaire(FORM_TOURNOI)
         db_save()
 
-
-def choisir_tournoi():
-    controller = ControllerTournoi()
-    options_tournoi = [(t.nom, lambda t=t: controller.editer_tournoi(t)) for t in tournois]
-    Menu.gerer_menu(options_tournoi)
+    @staticmethod
+    def choisir_tournoi():
+        controller = ControllerTournoi()
+        options_tournoi = [(t.nom, lambda t=t: controller.editer_tournoi(t)) for t in tournois]
+        Menu.gerer_menu(options_tournoi, nb_fois=1)

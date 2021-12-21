@@ -3,8 +3,8 @@ from view import MenuView
 
 class Menu:
     @staticmethod
-    def gerer_menu(options, context=[]):
-        while True:
+    def gerer_menu(options, context=[], nb_fois=-1):
+        while nb_fois:
             choix = MenuView.afficher_menu(options)
             if choix.lower() == "q":
                 break
@@ -15,3 +15,4 @@ class Menu:
                 continue
             option_choisie, callback_choisi = options[choix]
             callback_choisi(*context)
+            nb_fois -= 1

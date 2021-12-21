@@ -22,14 +22,14 @@ def menu_joueurs():
         [
             ("Créer nouveau joueur", controller_joueurs.creer_joueur),
             ("Modifier joueur", controller_joueurs.choisir_joueur),
-            ("Lister joueurs", controller_joueurs.lister_joueurs),
+            ("Lister joueurs", JoueursView.lister_joueurs),
         ]
     )
 
 
 class ControllerJoueurs:
-
-    def creer_joueur(self):
+    @staticmethod
+    def creer_joueur():
         while True:
             reponses = Formulaire.gerer_formulaire(FORM_JOUEUR)
             try:
@@ -38,8 +38,9 @@ class ControllerJoueurs:
                 return joueur
             except Exception as e:
                 JoueursView.print_cree_joueur(e)
-
-    def editer_joueur(self, joueur):
+    
+    @staticmethod
+    def editer_joueur(joueur):
         print(f"Joueur choisi: {joueur.nom}, {joueur.prenom}")
         reponses = Formulaire.gerer_formulaire(FORM_JOUEUR)
         joueur.nom = reponses["nom"]
@@ -48,8 +49,11 @@ class ControllerJoueurs:
         joueur.sexe = reponses["sexe"]
         joueur.classement = reponses["classement"]
         db_save()
-
+    
+    @staticmethod
     def choisir_joueur():
-        controller = ControllerJoueurs
+        controller = ControllerJoueurs()
         options_joueurs = [(j.nom, lambda j=j: controller.editer_joueur(j)) for j in joueurs]
-        Menu.gerer_menu(options_joueurs)
+        Menu.gerer_menu(options_joueurs, nb_fois=1)
+
+
